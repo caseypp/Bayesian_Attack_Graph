@@ -258,80 +258,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home Page</a>
+                            <a href="BAG_index.html"><i class="fa fa-dashboard fa-fw"></i> Home Page</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> New Project</a>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Trash</a>
-                        </li>
-                        
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                         
-                        
-                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                         <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                       
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
              
@@ -361,42 +291,47 @@
                    
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <?php
-	function number(){
-		$mysqli =new mysqli("localhost:3306", "root", "", "BAGRA"); //实例化
-		$result=mysqli_query($mysqli, 'select id from test');
-		$num=mysqli_num_rows($result);                            //取得包含id字段记录的行数
-		return $num;
-		}
-		
-   	$txt1='<a href="index.html" style="text-decoration:none" ><p><button type="button" class="btn btn-outline ';
-   	$text13=' btn-lg btn-block">' ;
-    	$txt3 ='</button></p></a>';
-		
-	//for($times = 1 ; $times <= number() ; $times++)
-	//{
-		$mysqli =new mysqli("127.0.0.1:3306", "root", "", "BAGRA");
-		$result=mysqli_query($mysqli,"select * from bag_project");
-		while($row=mysqli_fetch_array($result))
-		{
-		if ($row['project_rank']==4)
-            $text12='btn-danger';
-        if ($row['project_rank']==3)
-            $text12='btn-warning';
-        if ($row['project_rank']==2)
-            $text12='btn-primary';
-        if ($row['project_rank']==1)
-            $text12='btn-info';
-		echo $txt1 . $text12 . $text13 . $row['project_name'] . $txt3;
-		}
-	//}
-
-        /* Destroy the result set and free the memory used for it 结束查询释放内存 */ 
-       // mysqli_free_result($result); 
-    
-	
-							 
-                               ?> 
+                        
+                        
+  
+                            <a href='http://localhost/GUI_Template/Overall.php?projectID=123&projectName=NASA+Inner+System+of+Spacecraft+Department' style="text-decoration:none" >
+                            <p>
+                               <button type="button" class="btn btn-outline btn-danger btn-lg btn-block">NASA Inner System of Spacecraft Department</button>
+                            </p>
+                            </a>
+                            
+                            
+                            
+                             <a href="#" style="text-decoration:none" ><p>
+                               <button type="button" class="btn btn-outline btn-danger btn-lg btn-block">NASA Inner System of Spacecraft Department</button>
+                            </p></a>
+			     <a href="#" style="text-decoration:none" >
+                            <p>
+                                <button type="button" class="btn btn-outline btn-warning btn-lg btn-block">CIA Central React Department</button>
+                            </p></a>
+    			     <a href="#" style="text-decoration:none" >
+                          <p>
+                                <button type="button" class="btn btn-outline btn-warning btn-lg btn-block">CIA Central React Department</button>
+                            </p></a>
+			     <a href="#" style="text-decoration:none" >
+                            <p>
+                                <button type="button" class="btn btn-outline btn-primary btn-lg btn-block">National Security College of Habin Engineer University</button>
+                            </p></a>
+                              <a href="#" style="text-decoration:none" >
+                            <p>
+                                <button type="button" class="btn btn-outline btn-primary btn-lg btn-block">National Security College of Habin Engineer University</button>
+                            </p></a>
+                                        
+                                <a href='http://localhost/GUI_Template/Overall.php?projectID=125&projectName=Duke+University' style="text-decoration:none" >
+                                <p>
+                                    <button type="button" class="btn btn-outline btn-info btn-lg btn-block">Duke University</button>   
+                                </p>
+                                </a>
+                             
+ 			     <a href="#" style="text-decoration:none" >
+                            <p>
+                                <button type="button" class="btn btn-outline btn-success btn-lg btn-block">Chinese National Security Department</button>
+                            </p></a>
                         </div>
                       </div>
                     </div>
