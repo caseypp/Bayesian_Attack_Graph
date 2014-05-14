@@ -69,7 +69,8 @@ for n in range(0,double):
         pout = open("pre_node.txt","r+")
         print "x[",i,"]",x[i],
         str = pout.read(10)
-        str = str[5:8]
+        print str
+        str = str[5:9]
         str = float(str)
         print str
         if x[i] == '1':
