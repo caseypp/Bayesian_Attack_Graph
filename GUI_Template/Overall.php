@@ -316,7 +316,7 @@ EOT;
                 <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>Overall Risk Pannel 
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Overall Risk Pannel 
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -453,108 +453,51 @@ EOT;
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <ul class="timeline">
-                                <li>
+                                <?php
+                                $txt1='<li>
                                     <div class="timeline-badge"><i class="fa fa-check"></i>
                                     </div>
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
-                                            <h4 class="timeline-title"><a href="#">Timeline Event</a></h4>
-                                            <p>
-                                                <small class="text-muted"><i class="fa fa-time"></i> 11 hours ago via Twitter</small>
-                                            </p>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
+                                            <h4 class="timeline-title"><a href=';
+                                            #"#">' ;
+                                $txt12='<li class="timeline-inverted">
                                     <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
                                     </div>
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
-                                            <h4 class="timeline-title"><a href="#">Timeline Event</a></h4>
+                                            <h4 class="timeline-title"><a href=';
+                                $txt2='</a></h4>
+                                            <p>
+                                                <small class="text-muted"><i class="fa fa-time"></i>';
+                                                #11 hours ago via Twitter
+                                $txt3= '</small>
+                                            </p>
                                         </div>
                                         <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                            <p>';
+                                $txt_afterdis='</p>
                                         </div>
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-badge danger"><i class="fa fa-credit-card"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title"><a href="#">Timeline Event</a></h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title"><a href="#">Timeline Event</a></h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-badge info"><i class="fa fa-save"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title"><a href="#">Timeline Event</a></h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                            <hr>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="fa fa-cog"></i> 
-                                                    <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Action</a>
-                                                    </li>
-                                                    <li><a href="#">Another action</a>
-                                                    </li>
-                                                    <li><a href="#">Something else here</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Separated link</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title"><a href="#">Timeline Event</a></h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge success"><i class="fa fa-thumbs-up"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title"><a href="#">Timeline Event</a></h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                        </div>
-                                    </div>
-                                </li>
+                                </li>';
+                                $mysqli =new mysqli("127.0.0.1:3306", "root", "", "BAGRA");
+                                $result=mysqli_query($mysqli,"select * from bag_aglist where ag_group =" . $_GET['projectID']);
+                                while($row=mysqli_fetch_array($result))
+                                {
+                                #if ($row['project_status']==4)
+                                #    $text12='btn-danger';
+                                #if ($row['project_status']==3)
+                                #    $text12='btn-warning';
+                                #if ($row['project_status']==2)
+                                #    $text12='btn-primary';
+                                #if ($row['project_status']==1)
+                                #    $text12='btn-info';
+                                if($row['ag_id']%2==0)
+                                    echo $txt1 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                else
+                                    echo $txt12 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                }
+                                ?> 
                             </ul>
                         </div>
                         <!-- /.panel-body -->
