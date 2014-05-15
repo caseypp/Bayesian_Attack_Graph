@@ -482,6 +482,7 @@ EOT;
                                 </li>';
                                 $mysqli =new mysqli("127.0.0.1:3306", "root", "", "BAGRA");
                                 $result=mysqli_query($mysqli,"select * from bag_aglist where ag_group =" . $_GET['projectID']);
+                                #echo $result;
                                 while($row=mysqli_fetch_array($result))
                                 {
                                 #if ($row['project_status']==4)
@@ -492,10 +493,13 @@ EOT;
                                 #    $text12='btn-primary';
                                 #if ($row['project_status']==1)
                                 #    $text12='btn-info';
-                                if($row['ag_id']%2==0)
-                                    echo $txt1 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
-                                else
-                                    echo $txt12 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                
+                                   
+                                        if($row['ag_id']%2==0)
+                                            echo $txt1 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                        else
+                                            echo $txt12 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                                              
                                 }
                                 ?> 
                             </ul>
