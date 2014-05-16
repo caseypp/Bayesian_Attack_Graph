@@ -59,7 +59,6 @@ cJSON *Read_Json(char* filename)
 
 }
 
-
 /**
 **     THE FUNCTION IS TO REVERSE THE INT ARRAY
 **     RETURN INT * TYPE DATA
