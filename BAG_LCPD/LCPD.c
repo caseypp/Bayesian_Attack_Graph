@@ -12,10 +12,10 @@
 **/
 
 int * ONE_ZERO_CREATE(int LCPD_PRE_NUMBER,int LCPD_COUNT_CURRENT,int * ONE_ZERO_ARRAY)
-
+{
     //CREATE THE ONE-ZERO ARRAY
     int i;
-    for (int i = 0; LCPD_PRE_NUMBER >0; i++,LCPD_PRE_NUMBER--)
+    for(i=0 ; LCPD_PRE_NUMBER >0; i++,LCPD_PRE_NUMBER--)
     {
         ONE_ZERO_ARRAY[i]=(LCPD_COUNT_CURRENT >> (LCPD_PRE_NUMBER - 1)) & 1;
 	}
@@ -46,7 +46,7 @@ cJSON *Read_Json(char* filename)
 	else
 		printf("Open %s Error!\n\n",filename);
 
-    //transfer the data to json
+    //TRANSFER DATA TOT JSON
     cJSON * json;
     //char *out;
     json=cJSON_Parse(data);
@@ -68,8 +68,6 @@ int * REVERSE_INT(int *DATA,int LCPD_PRE_NUMBER)
 {
     int DATA_LENGTH;//THE LENGTH OF THE INT DATA
     DATA_LENGTH = LCPD_PRE_NUMBER;
-    //printf("%d\n",DATA_LENGTH);
-    //int DATA_TEMP;
     int i;
     for(i=0;i<DATA_LENGTH/2;i++)
     {
@@ -77,8 +75,6 @@ int * REVERSE_INT(int *DATA,int LCPD_PRE_NUMBER)
         int DATA_HEAD,DATA_END,DATA_TMP;
         DATA_HEAD=i;
         DATA_END=DATA_LENGTH-1-i;
-        //printf("HEAD:%d\t",DATA[DATA_HEAD]);
-        //printf("END:%d\t",DATA[DATA_END]);
         DATA_TMP=DATA[DATA_HEAD];
         DATA[DATA_HEAD]=DATA[DATA_END];
         DATA[DATA_END]=DATA_TMP;
@@ -86,6 +82,11 @@ int * REVERSE_INT(int *DATA,int LCPD_PRE_NUMBER)
     return DATA;
 
 }
+
+/**
+**       THE FUNCTION IS TO CALCULATE LCPD
+**
+**/
 
 
 /**
@@ -101,8 +102,40 @@ int main(int arg,char* argv[])
     cJSON *json;
     json=Read_Json("edge.json");
 
-    //get the part of a
-    cJSON *name = cJSON_GetObjectItem(json,"a");
+	//READ JSON WITH LOOP
+	int LCPD_JSON_LENGTH;
+	LCPD_JSON_LENGTH=cJSON_GetArraySize(json);
+	//printf("%d\n",LCPD_JSON_LENGTH);
+	int json_length;	
+	for(json_length=0;json_length<LCPD_JSON_LENGTH;json_length++)
+	{
+		//GET THE PART OF THE NODE	
+	    cJSON *LCPD_NODE = cJSON_GetObjectItem(json,i);
+	    cJSON *LCPFD_NODE_PRE=cJSON_GetObjectItem(LCPD_NODE,"pre");
+		LCPD_PRE_NUMBER=(int)LCPD_NODE_PRE->valuedouble;
+
+		LCPD_COUNT=pow(2,LCPD_PRE_NUMBER);//THE NUMBER OF THE 0-1 MATRATIX IN TOTAL
+
+		ONE_ZERO_ARRAY=(int*)malloc(LCPD_PRE_NUMBER);
+
+		int i;
+		for(i=0;i<LCPD_COUNT;i++)
+		{
+		    printf("%d: ",i);
+		    ONE_ZERO_ARRAY=ONE_ZERO_CREATE(LCPD_PRE_NUMBER,i,ONE_ZERO_ARRAY);
+
+		    //REVERSE THE INT DATA
+		    ONE_ZERO_ARRAY=REVERSE_INT(ONE_ZERO_ARRAY,LCPD_PRE_NUMBER);
+		    int k;//JUST FOR LOOP
+		    for(k=0;k<LCPD_PRE_NUMBER;k++)
+		    {
+		        printf("%d\t",ONE_ZERO_ARRAY[k]);
+		    }
+		    printf("\n");
+	}
+	/*    
+	//get the part of a
+    cJSON *name = cJSON_GetObjectItem(json,"b");
     cJSON *pre=cJSON_GetObjectItem(name,"pre");
 
     LCPD_PRE_NUMBER=(int)pre->valuedouble;
@@ -125,6 +158,7 @@ int main(int arg,char* argv[])
             printf("%d\t",ONE_ZERO_ARRAY[k]);
         }
         printf("\n");
+	*/
 
     }
 
