@@ -274,10 +274,14 @@ EOT;
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Overall</a>
+                            <?php
+                            echo '<a href="Overall.php?projectName=' . $_GET['projectName'] . '&' . 'projectID=' . $_GET['projectID'] . '"><i class="fa fa-bar-chart-o fa-fw"></i> Overall</a>';
+                            ?>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Assest Configuration</a>
+                            <?php
+                            echo '<a href="tables.php?projectName=' . $_GET['projectName'] . '&' . 'projectID=' . $_GET['projectID'] . '"><i class="fa fa-bar-chart-o fa-fw"></i> Assest Configuration</a>';
+                            ?>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i> host Configuation</a>
@@ -313,7 +317,7 @@ EOT;
             </div>
             <!-- /.row -->
           <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i> Overall Risk Pannel 
@@ -336,17 +340,21 @@ EOT;
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div>                      
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                            
+                            <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
                             <div id="morris-area-chart"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
+                   </div>
+                  <div class="col-lg-8">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Asset Update Info
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -375,10 +383,10 @@ EOT;
                                         <table class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th>ID</th>
                                                     <th>Date</th>
                                                     <th>Time</th>
-                                                    <th>Amount</th>
+                                                    <th>Asset</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -496,9 +504,9 @@ EOT;
                                 
                                    
                                         if($row['ag_id']%2==0)
-                                            echo $txt1 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                            echo $txt1 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '&projectID=' . $_GET['projectID'] . '&projectName=' . $_GET['projectName'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
                                         else
-                                            echo $txt12 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                            echo $txt12 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '&projectID=' . $_GET['projectID'] .  '&projectName=' . $_GET['projectName'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
                                                               
                                 }
                                 ?> 
@@ -662,9 +670,392 @@ EOT;
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
+    <script id="jquery_183" type="text/javascript" class="library" src="/js/sandbox/jquery/jquery-1.8.3.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="js/demo/dashboard-demo.js"></script>
+    
+    <!--script>
+    $(function() {
+
+    Morris.Area({
+        element: 'morris-area-chart',
+        data: [{
+            day: '2012-02-24',
+            C-Risk: 266,
+            I-Risk: null,
+            A-Risk: 2647
+        }, {
+            day: '2012-02-27',
+            C-Risk: 2778,
+            I-Risk: 2294,
+            A-Risk: 2441
+        }, {
+            day: '2012-03-03',
+            C-Risk: 4912,
+            I-Risk: 1969,
+            A-Risk: 2501
+        }, {
+            day: '2012-03-07',
+            C-Risk: 3767,
+            I-Risk: 3597,
+            A-Risk: 5689
+        }, {
+            day: '2012-03-09',
+            C-Risk: 6810,
+            I-Risk: 1914,
+            A-Risk: 2293
+        }, {
+            day: '2012-03-12',
+            C-Risk: 5670,
+            I-Risk: 4293,
+            A-Risk: 1881
+        }, {
+            day: '2012-03-14',
+            C-Risk: 4820,
+            I-Risk: 3795,
+            A-Risk: 1588
+        }, {
+            day: '2012-03-17',
+            C-Risk: 15073,
+            I-Risk: 5967,
+            A-Risk: 5175
+        }, {
+            day: '2012-03-19',
+            C-Risk: 10687,
+            I-Risk: 4460,
+            A-Risk: 2028
+        }, {
+            day: '2012-03-21',
+            C-Risk: 8432,
+            I-Risk: 5713,
+            A-Risk: 1791
+        }],
+        xkey: 'day',
+        ykeys: ['C-Risk', 'I-Risk', 'A-Risk'],
+        labels: ['C-Risk', 'I-Risk', 'A-Risk'],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+    Morris.Donut({
+        element: 'morris-donut-chart',
+        data: [{
+            label: "Download Sales",
+            value: 12
+        }, {
+            label: "In-Store Sales",
+            value: 30
+        }, {
+            label: "Mail-Order Sales",
+            value: 20
+        }],
+        resize: true
+    });
+
+    Morris.Bar({
+        element: 'morris-bar-chart',
+        data: [{
+            y: '2006',
+            a: 100,
+            b: 90
+        }, {
+            y: '2007',
+            a: 75,
+            b: 65
+        }, {
+            y: '2008',
+            a: 50,
+            b: 40
+        }, {
+            y: '2009',
+            a: 75,
+            b: 65
+        }, {
+            y: '2010',
+            a: 50,
+            b: 40
+        }, {
+            y: '2011',
+            a: 75,
+            b: 65
+        }, {
+            y: '2012',
+            a: 100,
+            b: 90
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        labels: ['Series A', 'Series B'],
+        hideHover: 'auto',
+        resize: true
+    });
+    
+	Morris.Line({
+ 		 // ID of the element in which to draw the chart.
+ 		 element: 'myfirstchart',
+ 		 // Chart data records -- each entry in this array corresponds to a point on
+ 		 // the chart.
+		  data: [
+			{ year: '2008', value: 20 },
+			{ year: '2009', value: 10 },
+			{ year: '2010', value: 5 },
+			{ year: '2011', value: 5 },
+			{ year: '2012', value: 20 }
+ 				 ],
+		xkey: 'year',
+		ykeys: ['value'],
+	    labels: ['Value']
+	});
+
+});
+</script-->
+<script>
+$(function() {
+
+    Morris.Area({
+        element: 'morris-area-chart',
+        data: [{
+            day: '2012-02-24',
+            iphone: 2666,
+            ipad: null,
+            itouch: 2647
+        }, {
+            day: '2012-02-27',
+            iphone: 2778,
+            ipad: 2294,
+            itouch: 2441
+        }, {
+            day: '2012-03-01',
+            iphone: 4912,
+            ipad: 1969,
+            itouch: 2501
+        }, {
+            day: '2012-03-04',
+            iphone: 3767,
+            ipad: 3597,
+            itouch: 5689
+        }, {
+            day: '2012-03-09',
+            iphone: 6810,
+            ipad: 1914,
+            itouch: 2293
+        }, {
+            day: '2012-03-11',
+            iphone: 5670,
+            ipad: 4293,
+            itouch: 1881
+        }, {
+            day: '2012-03-15',
+            iphone: 4820,
+            ipad: 3795,
+            itouch: 1588
+        },{
+            day: '2012-03-24',
+            iphone: 2666,
+            ipad: null,
+            itouch: 2647
+        }, {
+            day: '2012-03-27',
+            iphone: 2778,
+            ipad: 2294,
+            itouch: 2441
+        }, {
+            day: '2012-04-01',
+            iphone: 4912,
+            ipad: 1969,
+            itouch: 2501
+        }, {
+            day: '2012-04-04',
+            iphone: 3767,
+            ipad: 3597,
+            itouch: 5689
+        }, {
+            day: '2012-04-09',
+            iphone: 6810,
+            ipad: 1914,
+            itouch: 2293
+        }, {
+            day: '2012-04-11',
+            iphone: 5670,
+            ipad: 4293,
+            itouch: 1881
+        }, {
+            day: '2012-04-15',
+            iphone: 4820,
+            ipad: 3795,
+            itouch: 1588
+        }],
+        xkey: 'day',
+        ykeys: ['iphone', 'ipad', 'itouch'],
+        labels: ['C-Risk', 'I-Risk', 'A-Risk'],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+    Morris.Donut({
+        element: 'morris-donut-chart',
+        data: [{
+            label: "C Risk",
+            value: 12
+        }, {
+            label: "I Risk",
+            value: 30
+        }, {
+            label: "A Risk",
+            value: 20
+        }],
+        resize: true
+    });
+
+    Morris.Bar({
+        element: 'morris-bar-chart',
+        data: [{
+            y: '2006',
+            a: 100,
+            b: 90,
+            c: 75
+        }, {
+            y: '2007',
+            a: 75,
+            b: 65,
+            c: 75
+        }, {
+            y: '2008',
+            a: 50,
+            b: 40,
+            c: 44
+        }, {
+            y: '2009',
+            a: 75,
+            b: 65,
+            c: 67
+        }, {
+            y: '2010',
+            a: 50,
+            b: 40,
+            c: 34
+        }, {
+            y: '2011',
+            a: 75,
+            b: 65,
+            c: 75
+        }, {
+            y: '2012',
+            a: 100,
+            b: 90,
+            c: 82
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b', 'c'],
+        labels: ['Asset C', 'Asset I', 'Asset A'],
+        hideHover: 'auto',
+        resize: true
+    });
+
+    Morris.Line({
+        element: 'morris-line-chart',
+        data: [{
+            y: '2006',
+            a: 100,
+            b: 90
+        }, {
+            y: '2007',
+            a: 75,
+            b: 65
+        }, {
+            y: '2008',
+            a: 50,
+            b: 40
+        }, {
+            y: '2009',
+            a: 75,
+            b: 65
+        }, {
+            y: '2010',
+            a: 50,
+            b: 40
+        }, {
+            y: '2011',
+            a: 75,
+            b: 65
+        }, {
+            y: '2012',
+            a: 100,
+            b: 90
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        labels: ['Series A', 'Series B'],
+        hideHover: 'auto',
+        resize: true
+    });
+
+});
+
+</script>
+<script>
+var chart = new Highcharts.Chart({
+	chart: {
+		renderTo: 'container',
+		type: 'line',
+		marginRight: 130,
+		marginBottom: 25
+	},
+	title: {
+		text: 'Risk Infomation Ovearll',
+		x: -20 //center
+	},
+	subtitle: {
+		text: 'Source: BAGRA Project',
+		x: -20
+	},
+	xAxis: {
+		categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+			'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	},
+	yAxis: {
+		title: {
+			text: 'Risk Level (RUnit)'
+		},
+		plotLines: [{
+			value: 0,
+			width: 1,
+			color: '#808080'
+		}]
+	},
+	tooltip: {
+		formatter: function() {
+				return '<b>'+ this.series.name +'</b><br/>'+
+				this.x +': '+ this.y +' RUnit';
+		}
+	},
+	legend: {
+		layout: 'vertical',
+		align: 'right',
+		verticalAlign: 'top',
+		x: -10,
+		y: 100,
+		borderWidth: 0
+	},
+	series: [{
+		name: 'Total Risk',
+		data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+	}, {
+		name: 'C-Risk',
+		data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+	}, {
+		name: 'I-Risk',
+		data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+	}, {
+		name: 'A-Risk',
+		data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+	}]
+});
+</script>
 
 </body>
 

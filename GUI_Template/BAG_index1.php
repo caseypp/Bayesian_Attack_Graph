@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">BAG Risk Assessment System</a>
+                <a class="navbar-brand" href="BAG_index1.php">BAG Risk Assessment System</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -261,7 +261,7 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home Page</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> New Project</a>
+                            <a href="forms.php"><i class="fa fa-bar-chart-o fa-fw"></i> New Project</a>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
@@ -283,10 +283,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                          
-                       
-                         
-             
-             
+ 
              
                     </ul>
                     <!-- /#side-menu -->
@@ -298,12 +295,29 @@
 	
     <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Project List</h1>
-                </div>
+                <div class="col-lg12">
+                    <h1 class="page-header">Project Overview</h1>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Project Overview
+                        </div>
+                   
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                           <div id="container1" style="min-width:700px;height:400px"></div>
+                        </div>
+                      </div>
+                    </div>
+                        
+
                 <!-- /.col-lg-12 -->
             </div>
-         	<div class="col-lg-8">
+            <div class="col-lg12">
+                    <h1 class="page-header"></h1>
+                    </div>
+                      
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             BAG Risk Assessment Projects
@@ -360,7 +374,8 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="list-group">
+                        <div id="container" style="min-width:400px;height:400px"></div>
+                            <!--div class="list-group">
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-comment fa-fw"></i> New Comment
                                     <span class="pull-right text-muted small"><em>4 minutes ago</em>
@@ -406,131 +421,16 @@
                                     <span class="pull-right text-muted small"><em>Yesterday</em>
                                     </span>
                                 </a>
-                            </div>
+                            </div-->
+                            
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">View All Alerts</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel-Notifications -->
-                    <div class="chat-panel panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i>
-                            Chat
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="chat">
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong> 
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                                            </small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong> 
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-                        <div class="panel-footer">
-                            <div class="input-group">
-                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
+                   
+                        
                 </div>
                 <!-- /.col-lg-4 -->
             </div>
@@ -555,7 +455,177 @@
     <script src="js/sb-admin.js"></script>
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="js/demo/dashboard-demo.js"></script>
+    
+    <script type="text/javascript" src="highchart/js/jquery.min.js"></script>
+    <script type="text/javascript" src="highchart/js/highcharts.js"></script>
+    <script type="text/javascript" src="highchart/js/exporting.js"></script>
+    <script>
+   $(function () {
+    var chart;
+    
+    $(document).ready(function () {
+    	
+    	// Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Project Total Risk Info'
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Project Risk',
+                data: [
+                    ['Dangerous',   45.0],
+                    ['Critical',       26.8],
+                    {
+                        name: 'Normal',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Midem',    8.5],
+                    ['Normal',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+    });
+    
+});				
+</script>
+<script>
+$(function () {
+    $('#container1').highcharts({
+        chart: {
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Total Risk Info Overview'
+        },
+        subtitle: {
+            text: 'Source: Lovingmage'
+        },
+        xAxis: [{
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        }],
+        yAxis: [{ // Primary yAxis
+            labels: {
+                formatter: function() {
+                    return this.value +'RUnit';
+                },
+                style: {
+                    color: '#89A54E'
+                }
+            },
+            title: {
+                text: 'Project Overall Risk',
+                style: {
+                    color: '#89A54E'
+                }
+            },
+            opposite: true
+
+        }, { // Secondary yAxis
+            gridLineWidth: 0,
+            title: {
+                text: 'Asset Info',
+                style: {
+                    color: '#4572A7'
+                }
+            },
+            labels: {
+                formatter: function() {
+                    return this.value +' AUnit';
+                },
+                style: {
+                    color: '#4572A7'
+                }
+            }
+
+        }, { // Tertiary yAxis
+            gridLineWidth: 0,
+            title: {
+                text: 'Attack Inclination',
+                style: {
+                    color: '#AA4643'
+                }
+            },
+            labels: {
+                formatter: function() {
+                    return this.value +' ALUnit';
+                },
+                style: {
+                    color: '#AA4643'
+                }
+            },
+            opposite: true
+        }],
+        tooltip: {
+            shared: true
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 120,
+            verticalAlign: 'top',
+            y: 80,
+            floating: true,
+            backgroundColor: '#FFFFFF'
+        },
+        series: [{
+            name: 'Asset',
+            color: '#4572A7',
+            type: 'column',
+            yAxis: 1,
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+            tooltip: {
+                valueSuffix: ' AUnit'
+            }
+
+        }, {
+            name: 'Attack Inclination',
+            type: 'spline',
+            color: '#AA4643',
+            yAxis: 2,
+            data: [1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7],
+            marker: {
+                enabled: false
+            },
+            dashStyle: 'shortdot',
+            tooltip: {
+                valueSuffix: ' ALUnit'
+            }
+
+        }, {
+            name: 'Project Overall Risk',
+            color: '#89A54E',
+            type: 'spline',
+            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+            tooltip: {
+                valueSuffix: ' RUnit'
+            }
+        }]
+    });
+});				
+</script>
 
 </body>
 
