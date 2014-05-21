@@ -85,8 +85,30 @@ int * REVERSE_INT(int *DATA,int LCPD_PRE_NUMBER)
 
 /**
 **       THE FUNCTION IS TO CALCULATE LCPD
-**
+**       READ THE JSON TO GET THE PROBABILITY
+**       GET THE 0-1 MATRAIX FROM THE ONE_ZERO_ARRAY
 **/
+
+double LCPD_CALCULATE(int *ONE_ZERO_ARRAY,cJSON *LCPD_PROBABILITY,int LCPD_PRE_NUMBER)
+{
+    int LCPD_NODE_STATUS_PRE,LCPD_NODE_STATUS_CURRENT;//THE STATUS OF NODE
+    double LCPD_NODE_PROBABILITY;
+    LCPD_NODE_PROBABILITY=1;
+
+    int i;//JUST FOR LOOP
+    LCPD_NODE_STATUS_CURRENT=ONE_ZERO_ARRAY[LCPD_PRE_NUMBER-1];
+    for(i=0;i<LCPD_PRE_NUMBER-1;i++)
+    {
+        LCPD_NODE_STATUS_PRE=ONE_ZERO_ARRAY[i];
+        cJSON *LCPD_NODE_PROBABILITY_PRE=cJSON_GetArrayItem(LCPD_PROBABILITY,i);
+        if(LCPD_NODE_STATUS_PRE)
+            LCPD_NODE_PROBABILITY*=1-(LCPD_NODE_PROBABILITY_PRE->valuedouble);
+    }
+    if(LCPD_NODE_STATUS_CURRENT)
+        LCPD_NODE_PROBABILITY=1-LCPD_NODE_PROBABILITY;
+
+    return LCPD_NODE_PROBABILITY;
+}
 
 
 /**
@@ -98,6 +120,7 @@ int main(int arg,char* argv[])
 	int LCPD_PRE_NUMBER;//the number of the pre node
 	int LCPD_COUNT;//THE NUMBER EQUALS POW(2,LCPD_PRE_NUMBER)
     int *ONE_ZERO_ARRAY;
+    double LCPD_NODE_PROBABILITY;
 
     cJSON *json;
     json=Read_Json("edge.json");
@@ -105,60 +128,49 @@ int main(int arg,char* argv[])
 	//READ JSON WITH LOOP
 	int LCPD_JSON_LENGTH;
 	LCPD_JSON_LENGTH=cJSON_GetArraySize(json);
-	//printf("%d\n",LCPD_JSON_LENGTH);
-	int json_length;	
+
+	int json_length;//JUST FOR LOOP
 	for(json_length=0;json_length<LCPD_JSON_LENGTH;json_length++)
 	{
-		//GET THE PART OF THE NODE	
-	    cJSON *LCPD_NODE = cJSON_GetObjectItem(json,i);
-	    cJSON *LCPFD_NODE_PRE=cJSON_GetObjectItem(LCPD_NODE,"pre");
-		LCPD_PRE_NUMBER=(int)LCPD_NODE_PRE->valuedouble;
+		//GET THE PART OF THE NODE
+	    //cJSON *LCPD_NODE = cJSON_GetObjectItem(json,json_length+1);
+	    cJSON *LCPD_NODE = cJSON_GetArrayItem(json,json_length);
+
+	    //GET THE NUMBER OF PRE NODE
+	    cJSON *LCPD_PRE=cJSON_GetObjectItem(LCPD_NODE,"pre");
+		LCPD_PRE_NUMBER=(int)LCPD_PRE->valuedouble;
+
+		//GET THE PROBABILITY FROM THE JSON
+		cJSON *LCPD_PROBABILITY=cJSON_GetObjectItem(LCPD_NODE,"pre_node");
+
+
+		int i;
 
 		LCPD_COUNT=pow(2,LCPD_PRE_NUMBER);//THE NUMBER OF THE 0-1 MATRATIX IN TOTAL
 
 		ONE_ZERO_ARRAY=(int*)malloc(LCPD_PRE_NUMBER);
 
-		int i;
+		//int i;
 		for(i=0;i<LCPD_COUNT;i++)
 		{
-		    printf("%d: ",i);
+		    //printf("%d: ",i);
 		    ONE_ZERO_ARRAY=ONE_ZERO_CREATE(LCPD_PRE_NUMBER,i,ONE_ZERO_ARRAY);
 
 		    //REVERSE THE INT DATA
 		    ONE_ZERO_ARRAY=REVERSE_INT(ONE_ZERO_ARRAY,LCPD_PRE_NUMBER);
-		    int k;//JUST FOR LOOP
-		    for(k=0;k<LCPD_PRE_NUMBER;k++)
-		    {
-		        printf("%d\t",ONE_ZERO_ARRAY[k]);
-		    }
-		    printf("\n");
-	}
-	/*    
-	//get the part of a
-    cJSON *name = cJSON_GetObjectItem(json,"b");
-    cJSON *pre=cJSON_GetObjectItem(name,"pre");
 
-    LCPD_PRE_NUMBER=(int)pre->valuedouble;
+			int k;
+			for(k=0;k<LCPD_PRE_NUMBER;k++)
+			{
+				printf("%d",ONE_ZERO_ARRAY[k]);
+			}
+			printf("\n");
 
-    LCPD_COUNT=pow(2,LCPD_PRE_NUMBER);//THE NUMBER OF THE 0-1 MATRATIX IN TOTAL
-
-    ONE_ZERO_ARRAY=(int*)malloc(LCPD_PRE_NUMBER);
-
-    int i;
-    for(i=0;i<LCPD_COUNT;i++)
-    {
-        printf("%d: ",i);
-        ONE_ZERO_ARRAY=ONE_ZERO_CREATE(LCPD_PRE_NUMBER,i,ONE_ZERO_ARRAY);
-
-        //REVERSE THE INT DATA
-        ONE_ZERO_ARRAY=REVERSE_INT(ONE_ZERO_ARRAY,LCPD_PRE_NUMBER);
-        int k;//JUST FOR LOOP
-        for(k=0;k<LCPD_PRE_NUMBER;k++)
-        {
-            printf("%d\t",ONE_ZERO_ARRAY[k]);
+		    LCPD_NODE_PROBABILITY=LCPD_CALCULATE(ONE_ZERO_ARRAY,LCPD_PROBABILITY,LCPD_PRE_NUMBER);
+		    //printf("%f\n",LCPD_NODE_PROBABILITY);
+		    //printf("\n");
         }
         printf("\n");
-	*/
 
     }
 

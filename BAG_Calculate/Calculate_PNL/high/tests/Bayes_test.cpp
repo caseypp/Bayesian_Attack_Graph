@@ -1,23 +1,12 @@
 #include<iostream>
 #include <time.h>
 #include "test_conf.hpp"
-//#include "/home/moonsea/OpenPNL-master/trs/include/trsapi.h"
 #include <stdlib.h>
 #include <string.h>
 #include <string>
 #include "pnl_dll.hpp"
-//#include "/home/moonsea/OpenPNL-master/high/include/pnlHigh.hpp"
-//#include <pnlHigh.hpp>
-//#include "/home/moonsea/OpenPNL-master/high/include/Tokens.hpp"
-//#include "/home/moonsea/OpenPNL-master/high/include/TestPnlHigh.hpp"
-//#include "/home/moonsea/OpenPNL-master/high/include/pnlException.hpp"
-//#include <pnlException.hpp>
-//#include "/home/moonsea/OpenPNL-master/high/include/pnlFakePtr.hpp"
-//#include <pnlFakePtr.hpp>
-//#include "BNet.hpp"
 #include "pnlWProbabilisticNet.hpp"
 #include "pnlWGraph.hpp"
-//#include "BNet.hpp"
 
 
 using namespace std;
