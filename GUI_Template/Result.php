@@ -22,6 +22,61 @@ echo <<<EOT
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <script src='http://localhost/GUI_Template/d3/d3.min.js'></script>
+    <script type="text/javascript" src="http://localhost/GUI_Template/d3/d3.v3.js"></script>    
+    <style type="text/css">    
+path.link {  
+  fill: none;  
+  stroke: #666;  
+  stroke-width: 1.5px;  
+}  
+ marker#licensing1 {  
+  fill: blue;  
+}  
+  
+path.link.licensing1 {  
+  stroke: blue;  
+}   
+
+  marker#licensing2 {  
+  fill: yellow;  
+}  
+  
+path.link.licensing2 {  
+  stroke: yellow;  
+}   
+
+  marker#licensing {  
+  fill: green;  
+}  
+  
+path.link.licensing {  
+  stroke: green;  
+}  
+  
+path.link.resolved {  
+  stroke-dasharray: 1,3 3;  
+}  
+  
+circle {  
+  fill: #aaa;  
+  stroke: #333;  
+  stroke-width: 3px;   
+}  
+  
+text {  
+  font: 15px sans-serif;  
+  pointer-events: none;  
+}  
+  
+text.shadow {  
+  stroke: #FFFFFF;  
+  stroke-width: 3px;  
+  stroke-opacity: 0.8;  
+}  
+}  	
+  
+</style>    
     
 </head>
 EOT;
@@ -311,126 +366,104 @@ EOT;
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper1">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">2014-5-01 Result</h1>
+                    <h1 class="page-header">Blank</h1>
+                    <script src="links.js" type="text/javascript"></script>
+        <script type="text/javascript">  
+
+  
+var nodes = {};  
+  
+links.forEach(function(link) {  
+  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});  
+  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});  
+});  
+  
+var w = 1600,  
+    h = 500;  
+  
+var force = d3.layout.force()  
+    .nodes(d3.values(nodes))  
+    .links(links)  
+    .size([w, h])  
+    .linkDistance(90)  
+    .charge(-800)  
+    .on("tick", tick)  
+    .start();  
+  
+var svg = d3.select("body").append("svg:svg")  
+    .attr("width", w)  
+    .attr("height", h);  
+  
+//(1)创建三种连线的标记  
+//各自属性是什么意思？？  
+svg.append("svg:defs").selectAll("marker")  
+    .data(["suit", "licensing", "resolved","licensing1","licensing2"])  
+  .enter().append("svg:marker")  
+    .attr("id", String)  
+    .attr("viewBox", "0 -5 10 10")  
+    .attr("refX", 15)  
+    .attr("refY", -1.5)  
+    .attr("markerWidth", 6)  
+    .attr("markerHeight", 6)  
+    .attr("orient", "auto")  
+  .append("svg:path")  
+    .attr("d", "M0,-5L10,0L0,5");  
+//(2)根据连线类型引用上面创建的标记  
+var path = svg.append("svg:g").selectAll("path")  
+    .data(force.links())  
+  .enter().append("svg:path")  
+    .attr("class", function(d) { return "link " + d.type; })  
+    .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });  
+  
+var circle = svg.append("svg:g").selectAll("circle")  
+    .data(force.nodes())  
+  .enter().append("svg:circle")  
+    .attr("r", 6)  
+    .call(force.drag);  
+  
+var text = svg.append("svg:g").selectAll("g")  
+    .data(force.nodes())  
+  .enter().append("svg:g");  
+  
+// A copy of the text with a thick white stroke for legibility.  
+text.append("svg:text")  
+    .attr("x", 8)  
+    .attr("y", ".31em")  
+    .attr("class", "shadow")  
+    .text(function(d) { return d.name; });  
+  
+text.append("svg:text")  
+    .attr("x", 8)  
+    .attr("y", ".31em")  
+    .text(function(d) { return d.name; });  
+  
+// 使用椭圆弧路径段双向编码。  
+function tick() {  
+//(3)打点path格式是：Msource.x,source.yArr00,1target.x,target.y  
+  path.attr("d", function(d) {  
+    var dx = d.target.x - d.source.x,//增量  
+        dy = d.target.y - d.source.y,  
+        dr = Math.sqrt(dx * dx + dy * dy);  
+    return "M" + d.source.x + ","   
+    + d.source.y + "A" + dr + ","   
+    + dr + " 0 0,1 " + d.target.x + ","   
+    + d.target.y;  
+  });  
+  
+  circle.attr("transform", function(d) {  
+    return "translate(" + d.x + "," + d.y + ")";  
+  });  
+  
+  text.attr("transform", function(d) {  
+    return "translate(" + d.x + "," + d.y + ")";  
+  });  
+}  
+        </script>  
                 </div>
                 <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-          <div class="row">
-                <div class="col-lg-8">
-                    <div class="paenl paenl-default">
-                      <div class="paenl-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Overall Risk Pannel
-                            <div class="pull-right">
-                                <div class="btn-group">
-				   
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="paenl-body">
-                           
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    
-                    <!-- /.panel -->
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Payment Received
-                                    <span class="pull-right text-muted small"><em>Yesterday</em>
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                            <a href="#" class="btn btn-default btn-block">View Details</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
             </div>
             <!-- /.row -->
         </div>
@@ -438,6 +471,7 @@ EOT;
 
     </div>
     <!-- /#wrapper -->
+
 
     <!-- Core Scripts - Include with every page -->
     <script src="js/jquery-1.10.2.js"></script>
@@ -453,6 +487,6 @@ EOT;
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
       <script src="js/demo/dashboard-demo.js"></script>
-/body>
+</body>
 
 </html>
