@@ -1,105 +1,28 @@
 <!DOCTYPE html>
 <html>
 
-<?php
-echo <<<EOT
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
-    <title>
-EOT;
-echo $_GET['AG_Name'] . " - " . $_GET['AG_Time'];
-echo <<<EOT
-    </title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+
     <!-- Core CSS - Include with every page -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Page-Level Plugin CSS - Dashboard -->
-    <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-    <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
+    <!-- Page-Level Plugin CSS - Tables -->
+    <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="css/sb-admin.css" rel="stylesheet">
-    <script src='http://localhost/GUI_Template/d3/d3.min.js'></script>
-    <script type="text/javascript" src="http://localhost/GUI_Template/d3/d3.v3.js"></script>    
-    <style type="text/css">    
-    
-path.link {  
-  fill: none;  
-  stroke: #666;  
-  stroke-width: 1.5px;  
-}  
- marker#licensingq {  
-  fill: red;  
-}  
-  
-path.link.licensingq {  
-  stroke: red;  
-}   
- marker#licensing1 {  
-  fill: purple;  
-}  
-  
-path.link.licensing1 {  
-  stroke: purple;  
-}   
 
-  marker#licensing2 {  
-  fill: #CD6600;  
-}  
-  
-path.link.licensing2 {  
-  stroke: #CD6600;  
-}   
-
-  marker#licensing {  
-  fill: #3A5FCD;  
-}  
-  
-path.link.licensing {  
-  stroke: #3A5FCD;  
-}  
-  
-marker#suit {  
-  fill: #43CD80;  
-}  
-  
-path.link.suit {  
-  stroke: #43CD80;  
-}  
-
-path.link.resolved {  
-  stroke-dasharray: 1,3 3;  
-}  
-  
-circle {  
-  fill: #aaa;  
-  stroke: #222;  
-  stroke-width: 5px;   
-}  
-  
-text {  
-  font: 15px sans-serif;  
-  pointer-events: none;  
-}  
-  
-text.shadow {  
-  stroke: #FFFFFF;  
-  stroke-width: 3px;  
-  stroke-opacity: 0.8;  
-}  
-
-</style>    
-    
 </head>
-EOT;
-?>
 
 <body>
 
-    <div id="wrapper">
+<div id="wrapper">
 
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <?php  
@@ -113,14 +36,14 @@ EOT;
                 </button>
                 <a class="navbar-brand" href="#">
 EOT;
-           echo $_GET['AG_Name'] . " - " . $_GET['AG_Time'];
+           echo $_GET['projectName'];
            echo <<<EOT
                 </a>
             </div>
 EOT;
             ?>
             <!-- /.navbar-header -->
-
+            
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -347,38 +270,33 @@ EOT;
                         </li>
                         <li>
                             <?php
-                            echo'<a href="' .  'Overall.php?projectID=' . $_GET['projectID'] . '&projectName=' . $_GET['projectName'] . '"><i class="fa fa-dashboard fa-fw"></i>Overall</a>';
+                            echo '<a href="Overall.php?projectName=' . $_GET['projectName'] . '&' . 'projectID=' . $_GET['projectID'] . '"><i class="fa fa-bar-chart-o fa-fw"></i> Overall</a>';
                             ?>
                         </li>
-			 <li>
+                        <li>
                             <?php
                             echo '<a href="tables.php?projectName=' . $_GET['projectName'] . '&' . 'projectID=' . $_GET['projectID'] . '"><i class="fa fa-bar-chart-o fa-fw"></i> Assest Configuration</a>';
                             ?>
                         </li>
-			 <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Host Configuation</a>
-                        </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Risk Info<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> host Configuation</a>
+                        </li>
+                       <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Risk Info<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Charts</a>
+                                    <a href="#">chats</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tables</a>
+                                    <a href="#">tables</a>
                                 </li>
-				<li>
-                                    <a href="#">Catalgovies</a>
+                                <li>
+                                    <a href="#">catalgories</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                       
-                            <!-- /.nav-second-level -->
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
-                    <!-- /#side-menu -->
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
@@ -386,132 +304,94 @@ EOT;
         </nav>
 
 
-                    <?php
-                    echo '<script src="Project/project' . $_GET['projectID'] . '/AG/AG' . $_GET['AG_id'] . '/links.js" type="text/javascript"></script>' ;
-                    ?>
-                    <script type="text/javascript">  
-
-  
-var nodes = {};  
-  
-links.forEach(function(link) {  
-  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});  
-  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});  
-});  
-  
-var w = 1800,  
-    h = 800;  
-  
-var force = d3.layout.force()  
-    .nodes(d3.values(nodes))  
-    .links(links)  
-    .size([w, h])  
-    .linkDistance(120)  
-    .charge(-900)  
-    .on("tick", tick)  
-    .start();  
-  
-var svg = d3.select("body").append("svg:svg")  
-    .attr("width", w)  
-    .attr("height", h);  
-  
-//(1)创建三种连线的标记  
-//各自属性是什么意思？？  
-svg.append("svg:defs").selectAll("marker")  
-    .data(["suit", "licensing", "resolved","licensing1","licensing2"])  
-  .enter().append("svg:marker")  
-    .attr("id", String)  
-    .attr("viewBox", "0 -5 10 10")  
-    .attr("refX", 15)  
-    .attr("refY", -1.5)  
-    .attr("markerWidth", 6)  
-    .attr("markerHeight", 6)  
-    .attr("orient", "auto")  
-  .append("svg:path")  
-    .attr("d", "M0,-5L10,0L0,5");  
-//(2)根据连线类型引用上面创建的标记  
-var path = svg.append("svg:g").selectAll("path")  
-    .data(force.links())  
-  .enter().append("svg:path")  
-    .attr("class", function(d) { return "link " + d.type; })  
-    .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });  
-  
-var circle = svg.append("svg:g").selectAll("circle")  
-    .data(force.nodes())  
-  .enter().append("svg:circle")  
-    .attr("r", 6)  
-    .call(force.drag);  
-  
-var text = svg.append("svg:g").selectAll("g")  
-    .data(force.nodes())  
-  .enter().append("svg:g");  
-  
-// A copy of the text with a thick white stroke for legibility.  
-text.append("svg:text")  
-    .attr("x", 8)  
-    .attr("y", ".31em")  
-    .attr("class", "shadow")  
-    .text(function(d) { return d.name; });  
-  
-text.append("svg:text")  
-    .attr("x", 8)  
-    .attr("y", ".31em")  
-    .text(function(d) { return d.name; });  
-  
-// 使用椭圆弧路径段双向编码。  
-function tick() {  
-//(3)打点path格式是：Msource.x,source.yArr00,1target.x,target.y  
-  path.attr("d", function(d) {  
-    var dx = d.target.x - d.source.x,//增量  
-        dy = d.target.y - d.source.y,  
-        dr = Math.sqrt(dx * dx + dy * dy);  
-    return "M" + d.source.x + ","   
-    + d.source.y + "A" + dr + ","   
-    + dr + " 0 0,1 " + d.target.x + ","   
-    + d.target.y;  
-  });  
-  
-  circle.attr("transform", function(d) {  
-    return "translate(" + d.x + "," + d.y + ")";  
-  });  
-  
-  text.attr("transform", function(d) {  
-    return "translate(" + d.x + "," + d.y + ")";  
-  });  
-}  
-        </script>    
-
-
+        <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg12">
-                    <h1 class="page-header">xxxxxxxxxxxxxxxx Attack Graph</h1>
-                    
-                   
+                <div class="col-lg-12">
+                    <h1 class="page-header">Asset Info List</h1>
                 </div>
+                <!-- /.col-lg-12 -->
             </div>
-                                             
- </div>
-	<!-- /#wrapper -->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Asset Aduit Information
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                            
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Host ID</th>
+                                            <th>Host IP</th>
+                                            <th>C-Asset</th>
+                                            <th>I-Asset</th>
+                                            <th>A-Asset</th>
+                                            <th>Total Asset</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+							$mysqli =new mysqli("localhost:3306", "root", "", "bagra");
+							
+		$result=mysqli_query($mysqli,"select * from bag_asset where asset_group =" . $_GET['projectID']);
+		while($row= mysqli_fetch_array($result))
+		{
+			$table = '<tr><td>'.$row[0].'</td>'.'<td>'.$row[1].'</td>'.'<td>'.$row[2].'</td>'.'<td>'.$row[3].'</td>'.'<td class="center">'.$row[4].'</td>'.'<td>'.$row[5].'</td>'.'</tr>';
+echo  $table;
+			}
+			
+		
                            
-                        
-                    
+                            ?>
+                            
+                                        
+                              
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                            <div class="well">
+                                <h4>Asset Aduit Info Usage Information</h4>
+                                <p>DataTables is a very flexible, advanced tables plugin for jQuery. In this part, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://github.com/Lovingmage">https://github.com/Lovingmage/</a>.</p>
+                                <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://github.com/Lovingmage">View DataTables Documentation</a>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+           
+        </div>
+        <!-- /#page-wrapper -->
 
-
+    </div>
+    <!-- /#wrapper -->
 
     <!-- Core Scripts - Include with every page -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="js/plugins/morris/morris.js"></script>
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
 
-    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-      <script src="js/demo/dashboard-demo.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+    </script>
+
 </body>
 
 </html>

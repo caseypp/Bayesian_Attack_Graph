@@ -274,10 +274,14 @@ EOT;
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Overall</a>
+                            <?php
+                            echo '<a href="Overall.php?projectName=' . $_GET['projectName'] . '&' . 'projectID=' . $_GET['projectID'] . '"><i class="fa fa-bar-chart-o fa-fw"></i> Overall</a>';
+                            ?>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Assest Configuration</a>
+                            <?php
+                            echo '<a href="tables.php?projectName=' . $_GET['projectName'] . '&' . 'projectID=' . $_GET['projectID'] . '"><i class="fa fa-bar-chart-o fa-fw"></i> Assest Configuration</a>';
+                            ?>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i> host Configuation</a>
@@ -500,9 +504,9 @@ EOT;
                                 
                                    
                                         if($row['ag_id']%2==0)
-                                            echo $txt1 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                            echo $txt1 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '&projectID=' . $_GET['projectID'] . '&projectName=' . $_GET['projectName'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
                                         else
-                                            echo $txt12 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
+                                            echo $txt12 . '"Result.php?AG_id=' . $row['ag_id'] . '&' . 'AG_Name=' . $row['ag_name'] . '&' . 'AG_Time=' . $row['ag_gendate'] . '&projectID=' . $_GET['projectID'] .  '&projectName=' . $_GET['projectName'] . '">' . $row['ag_name'] . $txt2 . $row['ag_gendate'] . $txt3 . $row['ag_discription'] . $txt_afterdis;
                                                               
                                 }
                                 ?> 
@@ -895,13 +899,13 @@ $(function() {
     Morris.Donut({
         element: 'morris-donut-chart',
         data: [{
-            label: "Download Sales",
+            label: "C Risk",
             value: 12
         }, {
-            label: "In-Store Sales",
+            label: "I Risk",
             value: 30
         }, {
-            label: "Mail-Order Sales",
+            label: "A Risk",
             value: 20
         }],
         resize: true

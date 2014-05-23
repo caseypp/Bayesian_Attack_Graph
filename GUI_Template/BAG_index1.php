@@ -261,7 +261,7 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home Page</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> New Project</a>
+                            <a href="forms.php"><i class="fa fa-bar-chart-o fa-fw"></i> New Project</a>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
