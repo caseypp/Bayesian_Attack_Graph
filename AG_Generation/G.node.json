@@ -1,0 +1,44 @@
+{
+    "1": {
+        "host_ip": "192.168.1.101", 
+        "prilvage": [
+            "root", 
+            "user", 
+            "login", 
+            "access"
+        ]
+    }, 
+    "2": {
+        "host_ip": "192.168.1.103", 
+        "prilvage": [
+            "user", 
+            "login", 
+            "access"
+        ]
+    }, 
+    "3": {
+        "host_ip": "192.168.1.102", 
+        "prilvage": [
+            "user", 
+            "login", 
+            "access"
+        ]
+    }, 
+    "4": {
+        "host_ip": "192.168.1.103", 
+        "prilvage": [
+            "root", 
+            "user", 
+            "login", 
+            "access"
+        ]
+    }, 
+    "5": {
+        "host_ip": "192.168.1.104", 
+        "prilvage": [
+            "user", 
+            "login", 
+            "access"
+        ]
+    }
+}

@@ -9,6 +9,8 @@ import networkx as nx
 import json
 import HostPrilvage as Priv
 import string
+import os
+import sys
 
 #读取xml文件
 def xmlpython(xml1,n):
@@ -64,11 +66,11 @@ def post_node(G,H,i,root,n):
                         break
                 if break_flag==1:
                     continue
-        '''
-            Nodes are already in the Attack Graph,we just establish new attack path
-            Attack edge into the exist edge
-            Start:
-        '''
+    
+        #Nodes are already in the Attack Graph,we just establish new attack path
+        #Attack edge into the exist edge
+        #Start:
+    
                 for x in G.nodes():                                   		#如果后果点在G图中，就直接建立边
                     if G.node[x]['host_ip']==compare_ip and compare_priv in G.node[x]['prilvage']:
                         G.add_edge(attack_init_node_code,x,pr=pr1)
@@ -77,14 +79,14 @@ def post_node(G,H,i,root,n):
 
                 if c==1:
                     continue
-        '''
-            End
-        '''
-        '''
-        If no nodes or edges is exist we establish new nodes into G and new edges
-        into Edges
-        Start:
-        '''
+                        
+                        # End
+
+        
+        #If no nodes or edges is exist we establish new nodes into G and new edges
+        #into Edges
+        #Start:
+        
                 else:
                 
                     if compare_priv=='root':
